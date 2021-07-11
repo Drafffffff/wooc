@@ -29,6 +29,7 @@ struct Config
 Config config;
 //TODO:不存在config文件自动生成
 //TODO:拆分文件 模块化
+//TODO:使用 AsyncWebServer
 Config loadConfiguration(Config conf)
 {
   //TODO:从fs读取配置文件
@@ -122,6 +123,27 @@ void handleScan()
     server.send(200, "text/json;charset=UTF-8", wifidata);
   }
 }
+void handleFavicon(){
+  File file = LittleFS.open("/www/favicon.ico", "r");
+  server.streamFile(file,"image/ico");
+  file.close();
+}
+void handleNotFound()
+{
+  String message = "File Not Found\n\n";
+  message += "URI: ";
+  message += server.uri();
+  message += "\nMethod: ";
+  message += (server.method() == HTTP_GET) ? "GET" : "POST";
+  message += "\nArguments: ";
+  message += server.args();
+  message += "\n";
+  for (uint8_t i = 0; i < server.args(); i++)
+  {
+    message += " " + server.argName(i) + ": " + server.arg(i) + "\n";
+  }
+  server.send(404, "text/plain", message);
+}
 
 void handleConnect()
 {
@@ -170,6 +192,8 @@ void setup()
     server.on("/post", handlePost);
     server.on("/scan", handleScan);
     server.on("/connect", handleConnect);
+    server.on("/favicon.ico",handleFavicon);
+    server.onNotFound(handleNotFound);
     server.begin();
   }
   else

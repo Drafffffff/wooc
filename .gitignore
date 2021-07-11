@@ -1,4 +1,25 @@
 .pio
 .vscode
+vue-webpage/node_modules
+vue-webpage/.DS_Store
+vue-webpage/dist
 
-webpage/node_modules
+
+# local env files
+vue-webpage/.env.local
+vue-webpage/.env.*.local
+
+# Log files
+vue-webpage/npm-debug.log*
+vue-webpage/yarn-debug.log*
+vue-webpage/yarn-error.log*
+vue-webpage/pnpm-debug.log*
+
+# Editor directories and files
+vue-webpage/.idea
+vue-webpage/.vscode
+vue-webpage/*.suo
+vue-webpage/*.ntvs*
+vue-webpage/*.njsproj
+vue-webpage/*.sln
+vue-webpage/*.sw?
