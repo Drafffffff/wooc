@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Esp8266</title>
+  </head>
+  <body>
+    <h1>Hello esp8266</h1>
+    <form>
+      SSID: <input id="ssid" type="text" name="ssid" /><br />
+      PASSWORD: <input id="password" type="text" name="password" />
+    </form>
+    <button onclick="handleClick()">submit</button>
+
+    <script>
+      function handleClick() {
+        const ssid = document.getElementById("ssid").value;
+        const password = document.getElementById("password").value;
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/post", true);
+        xhr.setRequestHeader(
+          "Content-type",
+          "application/x-www-form-urlencoded"
+        );
+        xhr.send(`ssid=${ssid}&password=${password}`);
+      }
+    </script>
+  </body>
+</html>
