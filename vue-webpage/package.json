@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build && node ./build-single.js",
-    "lint": "vue-cli-service lint"
+    "serve": "vue-cli-service serve --mode development",
+    "build": "vue-cli-service build --mode production && node ./build-single.js",
+    "lint": "vue-cli-service lint",
+    "mock": "json-server --watch ./mock/db.json --port 8001 --delay 3000"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -18,7 +19,9 @@
     "@vue/compiler-sfc": "^3.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0"
+    "eslint-plugin-vue": "^7.0.0",
+    "sass": "^1.35.2",
+    "sass-loader": "^10"
   },
   "eslintConfig": {
     "root": true,

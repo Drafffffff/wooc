@@ -30,9 +30,9 @@ Config config;
 //TODO:不存在config文件自动生成
 //TODO:拆分文件 模块化
 //TODO:使用 AsyncWebServer
+//TODO:统一输出文件
 Config loadConfiguration(Config conf)
 {
-  //TODO:从fs读取配置文件
 
   File confFile = LittleFS.open("/config/config.json", "r");
   ReadBufferingStream bufferedFile{confFile, 1024};
@@ -47,19 +47,16 @@ Config loadConfiguration(Config conf)
   int i = 0;
   for (JsonObject v : wifiConfs)
   {
-    Serial.println(v["WIFI_NAME"].as<String>());
     conf.WIFIINFOS[i].WIFI_NAME = v["WIFI_NAME"].as<String>();
     conf.WIFIINFOS[i].WIFI_PASSWORD = v["WIFI_PASSWORD"].as<String>();
     i++;
   }
-  Serial.println(conf.WIFISTATE);
-  Serial.println(conf.WIFIINFOS[0].WIFI_NAME);
   return conf;
 }
 void handleRoot()
 {
   Serial.println("root");
-  File file = LittleFS.open("/www/index.html", "r");
+  File file = LittleFS.open("/www/index.html.gz", "r");
   server.streamFile(file, "text/html");
   file.close();
 }
@@ -193,6 +190,7 @@ void setup()
     server.on("/scan", handleScan);
     server.on("/connect", handleConnect);
     server.on("/favicon.ico",handleFavicon);
+    //TODO:handleSetconf 保存配置文件API
     server.onNotFound(handleNotFound);
     server.begin();
   }

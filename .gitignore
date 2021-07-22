@@ -1,5 +1,6 @@
 .pio
 .vscode
+.DS_Store
 vue-webpage/node_modules
 vue-webpage/.DS_Store
 vue-webpage/dist

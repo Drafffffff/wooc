@@ -5,6 +5,7 @@
 // 代码来自 https://zhuanlan.zhihu.com/p/38299118
 
 const fs = require("fs");
+const zlib = require("zlib");
 let html = fs.readFileSync("../data/www/index.html").toString();
 html = html
   // 因为css和js将内联到html中，所以此处移除preload标签
@@ -25,6 +26,7 @@ html = html
       return str;
     }
   );
+fs.writeFileSync("../data/www/index.html", html);
 function deletDir(path) {
   var files = [];
   if (fs.existsSync(path)) {
@@ -46,4 +48,18 @@ function deletDir(path) {
 }
 deletDir("../data/www/css");
 deletDir("../data/www/js");
-fs.writeFileSync("../data/www/index.html", html);
+
+// 处理输入和输出的文件路径
+let sourcePath = "../data/www/index.html";
+let gzipPath = "../data/www/index.html.gz";
+// 创建转化流
+let gzip = zlib.createGzip();
+// 创建可读流
+let rs = fs.createReadStream(sourcePath);
+// 创建可写流
+let ws = fs.createWriteStream(gzipPath);
+// 实现转化
+rs.pipe(gzip).pipe(ws);
+console.log("gzip %s success", gzipPath);
+fs.unlinkSync(sourcePath);
+console.log("Delet %s success", sourcePath);

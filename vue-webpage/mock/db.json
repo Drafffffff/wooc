@@ -1,0 +1,77 @@
+{
+  "scan": [
+    {
+      "SSID": "CAA-Teacher",
+      "encryptionType": "Open",
+      "RSSI": -73
+    },
+    {
+      "SSID": "CAA-Student",
+      "encryptionType": "Open",
+      "RSSI": -75
+    },
+    {
+      "SSID": "eduroam",
+      "encryptionType": "UNKNOW",
+      "RSSI": -80
+    },
+    {
+      "SSID": "CAA-Teacher",
+      "encryptionType": "Open",
+      "RSSI": -82
+    },
+    {
+      "SSID": "eduroam",
+      "encryptionType": "UNKNOW",
+      "RSSI": -82
+    },
+    {
+      "SSID": "CAA_Free",
+      "encryptionType": "Open",
+      "RSSI": -83
+    },
+    {
+      "SSID": "CAA_Free",
+      "encryptionType": "Open",
+      "RSSI": -76
+    },
+    {
+      "SSID": "CMCC-EDU",
+      "encryptionType": "Open",
+      "RSSI": -86
+    },
+    {
+      "SSID": "CMCC-WEB",
+      "encryptionType": "Open",
+      "RSSI": -86
+    },
+    {
+      "SSID": "CAA-Student",
+      "encryptionType": "Open",
+      "RSSI": -93
+    },
+    {
+      "SSID": "CAA-Teacher",
+      "encryptionType": "Open",
+      "RSSI": -96
+    },
+    {
+      "SSID": "CAA-Teacher",
+      "encryptionType": "Open",
+      "RSSI": -79
+    },
+    {
+      "SSID": "CAA-Student",
+      "encryptionType": "Open",
+      "RSSI": -72
+    },
+    {
+      "SSID": "IPC_0005CEKPPZ",
+      "encryptionType": "WPA2",
+      "RSSI": -77
+    },
+    {
+      "SSID": "CAA-Teacher"
+    }
+  ]
+}
